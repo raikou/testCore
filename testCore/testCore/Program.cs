@@ -15,7 +15,7 @@ namespace testCore
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
-				.UseUrls("http://*:5050")
+				.UseUrls("http://*:80")//ほかのポートたぶん開放してない
                 .UseStartup<Startup>()
                 .UseApplicationInsights()
                 .Build();
