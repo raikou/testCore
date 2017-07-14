@@ -15,7 +15,7 @@ namespace testCore
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
-				.UseUrls("http://localhost:80")
+				.UseUrls("http://*")
                 .UseStartup<Startup>()
                 .UseApplicationInsights()
                 .Build();
