@@ -7,18 +7,27 @@ namespace testCore.Entity
 {
 	public class DomainModelPostgreSqlContext : DbContext
 	{
-		public DomainModelPostgreSqlContext(DbContextOptions<DomainModelPostgreSqlContext> options) : base(options)
+		//public DomainModelPostgreSqlContext(DbContextOptions<DomainModelPostgreSqlContext> options) : base(options)
+		//{
+		//}
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
+			//optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.ConsoleApp.NewDb;Trusted_Connection=True;");
+			optionsBuilder.UseSqlServer(@"User ID = ruser; Password = raikou; Host = 192.168.52.128; Port = 5432; Database = test; Pooling = true;");
 		}
+
 
 		public DbSet<DataEventRecord> DataEventRecords { get; set; }
 
 		public DbSet<SourceInfo> SourceInfos { get; set; }
 
+		public DbSet<Person> Person { get; set; }
+
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 			builder.Entity<DataEventRecord>().HasKey(m => m.DataEventRecordId);
 			builder.Entity<SourceInfo>().HasKey(m => m.SourceInfoId);
+			builder.Entity<Person>().HasKey(m => m.Id);
 
 			// shadow properties
 			builder.Entity<DataEventRecord>().Property<DateTime>("UpdatedTimestamp");
