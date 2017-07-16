@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using testCore.Entity.Models;
 
 namespace testCore.Entity
 {
-	public class DomainModelPostgreSqlContext
+	public class DomainModelPostgreSqlContext : DbContext
 	{
 		public DomainModelPostgreSqlContext(DbContextOptions<DomainModelPostgreSqlContext> options) : base(options)
 		{
