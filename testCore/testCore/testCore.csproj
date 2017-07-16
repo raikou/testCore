@@ -35,6 +35,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\test\" />
+    <Folder Include="Controllers\testEntity\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\testClassLibrary\testClassLibrary.csproj" />
   </ItemGroup>
 
 </Project>
