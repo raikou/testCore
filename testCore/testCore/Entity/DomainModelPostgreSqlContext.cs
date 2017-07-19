@@ -21,13 +21,13 @@ namespace testCore.Entity
 
 		public DbSet<SourceInfo> SourceInfos { get; set; }
 
-		public DbSet<Person> Person { get; set; }
+		public DbSet<person> person { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 			builder.Entity<DataEventRecord>().HasKey(m => m.DataEventRecordId);
 			builder.Entity<SourceInfo>().HasKey(m => m.SourceInfoId);
-			builder.Entity<Person>().HasKey(m => m.Id);
+			builder.Entity<person>().HasKey(m => m.id);
 
 			// shadow properties
 			builder.Entity<DataEventRecord>().Property<DateTime>("UpdatedTimestamp");

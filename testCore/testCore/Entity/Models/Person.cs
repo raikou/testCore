@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace testCore.Entity.Models
 {
-	public class Person
+	public class person
 	{
 		[Key]
-		public int Id { get; set; }
-		public string Name { get; set; }
-		public int Age { get; set; }
+		public int id { get; set; }
+		public string name { get; set; }
+		public int age { get; set; }
 	}
 }
