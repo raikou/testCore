@@ -13,7 +13,7 @@ namespace testCore.Entity
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			//optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.ConsoleApp.NewDb;Trusted_Connection=True;");
-			optionsBuilder.UseSqlServer(@"User ID = ruser; Password = raikou; Host = 192.168.52.128; Port = 5432; Database = test; Pooling = true;");
+			optionsBuilder.UseNpgsql(@"User ID = ruser; Password = raikou; Host = 192.168.52.128; Port = 5432; Database = test; Pooling = true;");
 		}
 
 

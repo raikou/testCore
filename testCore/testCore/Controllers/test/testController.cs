@@ -16,30 +16,42 @@ namespace testCore.Controllers.test
 	{
 		// GET: api/test
 		[HttpGet]
-		public IEnumerable<string> Get()
+		public List<Person> Get()
 		{
+			var result = new List<Person>();
 			//DbContext
 			using (var context = new DomainModelPostgreSqlContext())
 			{
-				// do stuff
-				var data = from x in context.Person
-					select x;
-				
-				var addItem = new Person()
-				{
-					Id = 1,
-					Name = "なまえ",
-					Age = 23
-				};
-
+				var conPerson = context.Person;
+				var data = from x in conPerson select new {x};
 				var dataList = data.ToList();
-				dataList.Add(addItem);
+
+				//追加
+				{
+					var addItem = new Person()
+					{
+						Id = 1 + dataList.Count(),
+						Name = "なまえ" + dataList.Count().ToString(),
+						Age = 3 +dataList.Count()
+					};
+					conPerson.Add(addItem);
+
+					//更新
+					int tAge = 1 + dataList.Max(x => x.x.Age);
+					foreach (var v in dataList)
+					{
+						v.x.Age = tAge;
+					}
+
+					//データ取得
+					result = data.Select(x => (Person)x.x).ToList();
+				}
 
 				context.SaveChanges();
 			}
 
 
-			return new string[] { "value1", "value2" };
+			return result;
 		}
 
 		// GET: api/test/5
