@@ -52,6 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\test\" />
+    <Folder Include="Controllers\testEF\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\testCoreModels\testCoreModels.csproj" />
   </ItemGroup>
 
 </Project>
