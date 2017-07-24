@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace testCoreModels
+namespace testCoreClassLibraryStandard
 {
-    public class PersonView
+	public class PersonView
     {
 	    public int id { get; set; }
 	    public string name { get; set; }
