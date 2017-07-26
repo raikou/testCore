@@ -10,7 +10,7 @@
 		<Grid>
 			<DataGrid Name="DataGrid" Margin="10,10,10,66"></DataGrid>
 		</Grid>
-		<Button Content="Button" HorizontalAlignment="Left" Margin="10,264,0,33" Width="75" Click="Button_Click" RenderTransformOrigin="0.491,-0.563"/>
+		<Button Content="Button" HorizontalAlignment="Left" Margin="10,0,0,10" Width="75" Click="Button_Click" RenderTransformOrigin="0.491,-0.563" Height="22" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom"/>
 
 	</Grid>
 </Window>

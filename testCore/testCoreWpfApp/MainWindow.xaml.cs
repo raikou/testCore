@@ -28,14 +28,15 @@ namespace testCoreWpfApp
 		public MainWindow()
 		{
 			InitializeComponent();
+			ViewData();
 
 		}
 
 		private void ViewData()
 		{
 			string url;
-			//url = "http://192.168.52.128/api/people";
-			url = "http://localhost:55192/api/people";
+			url = "http://192.168.52.128/api/people";
+			//url = "http://localhost:55192/api/people";
 			HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
 
 			req.ContentType = "application/json";
