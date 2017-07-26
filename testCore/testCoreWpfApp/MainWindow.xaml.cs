@@ -33,11 +33,9 @@ namespace testCoreWpfApp
 
 		private void ViewData()
 		{
-			var items = new List<PersonView>();
-
 			string url;
-			url = "http://192.168.52.128/api/test";
-			//url = "http://localhost:55192/api/test";
+			//url = "http://192.168.52.128/api/people";
+			url = "http://localhost:55192/api/people";
 			HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
 
 			req.ContentType = "application/json";
@@ -45,16 +43,18 @@ namespace testCoreWpfApp
 
 
 			HttpWebResponse res = (HttpWebResponse)req.GetResponse();
-			PersonView result;
+			List<PersonView> result;
 			using (res)
 			{
 				using (var resStream = res.GetResponseStream())
 				{
 					StreamReader sr = new StreamReader(resStream);
 					string str = sr.ReadToEnd();
-					result = JsonConvert.DeserializeObject<PersonView>(str.ToString());
+					result = JsonConvert.DeserializeObject<List<PersonView>>(str.ToString());
 				}
 			}
+
+			DataGrid.ItemsSource = result;
 		}
 
 		private void Button_Click(object sender, RoutedEventArgs e)

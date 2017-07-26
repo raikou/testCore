@@ -7,14 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
 	<Grid>
-		<ListView HorizontalAlignment="Left" Height="227" Margin="23,10,0,0" VerticalAlignment="Top" Width="460">
-			<ListView.View>
-				<GridView>
-					<GridViewColumn/>
-				</GridView>
-			</ListView.View>
-		</ListView>
-		<Button Content="Button" HorizontalAlignment="Left" Margin="29,265,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+		<Grid>
+			<DataGrid Name="DataGrid" Margin="10,10,10,66"></DataGrid>
+		</Grid>
+		<Button Content="Button" HorizontalAlignment="Left" Margin="10,264,0,33" Width="75" Click="Button_Click" RenderTransformOrigin="0.491,-0.563"/>
 
 	</Grid>
 </Window>
