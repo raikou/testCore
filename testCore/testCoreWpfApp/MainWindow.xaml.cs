@@ -35,13 +35,7 @@ namespace testCoreWpfApp
 		private void ViewData()
 		{
 			string url;
-			url = "http://192.168.52.128/api/people";
-			//url = "http://localhost:55192/api/people";
-			HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
-
-			req.ContentType = "application/json";
-			req.Method = "GET";
-
+			HttpWebRequest req = common.connectionGet("people");
 
 			HttpWebResponse res = (HttpWebResponse)req.GetResponse();
 			List<PersonView> result;
@@ -58,9 +52,41 @@ namespace testCoreWpfApp
 			DataGrid.ItemsSource = result;
 		}
 
+		private void PostData()
+		{
+			HttpWebRequest req = common.connectionPost("people");
+
+			using (var streamWriter = new StreamWriter(req.GetRequestStream()))
+			{
+				var data = new PersonView()
+				{
+					id = 100,
+					name = "ポスト",
+					age = 21
+				};
+				string json = Newtonsoft.Json.JsonConvert.SerializeObject(data);
+				streamWriter.Write(json);
+			}
+
+			HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+			List<PersonView> result = new List<PersonView>();
+			using (res)
+			{
+				using (var resStream = res.GetResponseStream())
+				{
+					StreamReader sr = new StreamReader(resStream);
+					string str = sr.ReadToEnd();
+					var r = JsonConvert.DeserializeObject<PersonView>(str.ToString());
+					result.Add(r);
+				}
+			}
+			DataGrid.ItemsSource = result;
+		}
+
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-			ViewData();
+			PostData();
 		}
+
 	}
 }

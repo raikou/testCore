@@ -53,6 +53,7 @@
   <ItemGroup>
     <Folder Include="Controllers\test\" />
     <Folder Include="Controllers\testEF\" />
+    <Folder Include="Controllers\aaaa\" />
   </ItemGroup>
 
 </Project>

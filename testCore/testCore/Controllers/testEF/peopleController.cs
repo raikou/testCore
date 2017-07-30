@@ -90,8 +90,24 @@ namespace testCore.Controllers.testEF
             {
                 return BadRequest(ModelState);
             }
+	        var context = _context.person;
+	        var data = from x in context
+		        where x.id == person.id
+		        select new {x};
+	        var dataList = data.ToList();
+	        if (dataList.Count == 0)
+	        {
+		        context.Add(person);
+	        }
+	        else
+	        {
+		        foreach (var item in dataList)
+		        {
+			        item.x.age = person.age;
+			        item.x.name = person.name;
+		        }
+	        }
 
-            _context.person.Add(person);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("Getperson", new { id = person.id }, person);

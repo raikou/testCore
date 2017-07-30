@@ -59,5 +59,23 @@ namespace testCoreWpfApp.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   http://192.168.52.128/api/ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string connectionApiURL {
+            get {
+                return ResourceManager.GetString("connectionApiURL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   http://localhost:55192/api/ に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string connectionApiURLLocal {
+            get {
+                return ResourceManager.GetString("connectionApiURLLocal", resourceCulture);
+            }
+        }
     }
 }
