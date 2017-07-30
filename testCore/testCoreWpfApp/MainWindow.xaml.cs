@@ -35,8 +35,7 @@ namespace testCoreWpfApp
 		{
 			InitializeComponent();
 
-			ViewData();
-
+			GetUserList();
 		}
 
 		#region HttpClientに置き換えてみる
@@ -123,18 +122,11 @@ namespace testCoreWpfApp
 		//}
 		#endregion
 
-		private void ViewData()
-		{
-			Get();
-		}
 
 
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-			PutById();
-		}
+		#region API処理
 
-		private async void Get()
+		private async void GetUserList()
 		{
 			var hc = new HttpClient();
 			hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -163,12 +155,6 @@ namespace testCoreWpfApp
 			List<PersonView> items = new List<PersonView>();
 			items.Add(item);
 			ViewGrid.ItemsSource = items;
-		}
-
-		private int maxId()
-		{
-			int result = ((List<PersonView>)ViewGrid.ItemsSource).Max(x => x.id);
-			return result + 1;
 		}
 
 		/// <summary>
@@ -229,49 +215,14 @@ namespace testCoreWpfApp
 			testMess.Text = str;
 		}
 
-		#region 多分要らない
-		//private async void Create(object sender, RoutedEventArgs e)
-		//{
-		//	var person = new PersonView() { id = maxId(), name = "new person", age = 0 };
-		//	var js = new Newtonsoft.Json.JsonSerializer();
-		//	var sw = new System.IO.StringWriter();
-		//	js.Serialize(sw, person);
-		//	var hc = new HttpClient();
-		//	hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-		//	var json = sw.ToString();
-		//	var cont = new StringContent(json, Encoding.UTF8, "application/json");
-		//	var res = await hc.PostAsync(common.GetURL() + "people/Create", cont);
-		//	var str = await res.Content.ReadAsStringAsync();
-		//	testMess.Text = str;
-
-		//	var jr = new Newtonsoft.Json.JsonTextReader(new System.IO.StringReader(str));
-		//	var item = js.Deserialize<PersonView>(jr);
-		//	List<PersonView> items = new List<PersonView>();
-		//	items.Add(item);
-		//	ViewGrid.ItemsSource = items;
-		//}
-
-		//private async void Edit(object sender, RoutedEventArgs e)
-		//{
-		//	var person = (PersonView)ViewGrid.SelectedItem;
-		//	var js = new Newtonsoft.Json.JsonSerializer();
-		//	var sw = new System.IO.StringWriter();
-		//	js.Serialize(sw, person);
-		//	var hc = new HttpClient();
-		//	hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-		//	var json = sw.ToString();
-		//	var cont = new StringContent(json, Encoding.UTF8, "application/json");
-		//	var res = await hc.PostAsync(common.GetURL() + "people/Edit/{id}", cont);
-		//	var str = await res.Content.ReadAsStringAsync();
-		//	testMess.Text = str;
-
-		//	var jr = new Newtonsoft.Json.JsonTextReader(new System.IO.StringReader(str));
-		//	var item = js.Deserialize<PersonView>(jr);
-		//	List<PersonView> items = new List<PersonView>();
-		//	items.Add(item);
-		//	ViewGrid.ItemsSource = items;
-		//}
 		#endregion
+
+		#region ユーザー処理
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			PutById();
+		}
 
 		private void Button_Click_1(object sender, RoutedEventArgs e)
 		{
@@ -279,12 +230,33 @@ namespace testCoreWpfApp
 			person.name = "新規データ";
 			person.age = 0;
 			Post(person);
+
+			//最新情報取得
+			GetUserList();
 		}
 
 		private void Button_Click_2(object sender, RoutedEventArgs e)
 		{
 			var person = (PersonView)ViewGrid.SelectedItem;
 			DeleteById(person.id);
+
+			//最新情報取得
+			GetUserList();
 		}
+
+		#endregion
+		#region 内部処理
+
+		/// <summary>
+		/// 最大番号を取得する
+		/// </summary>
+		/// <returns></returns>
+		private int maxId()
+		{
+			int result = ((List<PersonView>)ViewGrid.ItemsSource).Max(x => x.id);
+			return result + 1;
+		}
+
+		#endregion
 	}
 }

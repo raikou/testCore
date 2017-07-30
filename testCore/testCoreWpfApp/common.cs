@@ -13,8 +13,8 @@ namespace testCoreWpfApp
 	{
 		public static string GetURL()
 		{
-			//return Properties.Resources.connectionApiURL;
-			return Properties.Resources.connectionApiURLLocal;
+			return Properties.Resources.connectionApiURL;
+			//return Properties.Resources.connectionApiURLLocal;
 		}
 
 		public static HttpWebRequest connectionGet(string url)
