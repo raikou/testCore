@@ -51,6 +51,7 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Controllers\testEF\" />
     <Folder Include="Controllers\test\" />
     <Folder Include="Controllers\testEF\" />
     <Folder Include="Controllers\aaaa\" />

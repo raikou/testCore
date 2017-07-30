@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -55,5 +57,25 @@ namespace testCoreWpfApp
 			return req;
 		}
 
+		public static DataTable ConvertToDataTable<T>(T list) where T : IList
+		{
+			var table = new DataTable(typeof(T).GetGenericArguments()[0].Name);
+
+			table.BeginLoadData();
+
+			typeof(T).GetGenericArguments()[0].GetProperties().
+				ToList().ForEach(p => table.Columns.Add(p.Name, p.PropertyType));
+			foreach (var item in list)
+			{
+				var row = table.NewRow();
+				item.GetType().GetProperties().
+					ToList().ForEach(p => row[p.Name] = p.GetValue(item, null));
+				table.Rows.Add(row);
+			}
+
+			table.EndLoadData();
+
+			return table;
+		}
 	}
 }
