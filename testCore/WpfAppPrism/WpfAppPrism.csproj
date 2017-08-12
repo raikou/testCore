@@ -144,11 +144,5 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WpfCustomControlLibraryPrism\WpfCustomControlLibraryPrism.csproj">
-      <Project>{19c1206b-2bc4-43c7-a740-40ea476c7adb}</Project>
-      <Name>WpfCustomControlLibraryPrism</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

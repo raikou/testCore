@@ -8,7 +8,6 @@ using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Unity;
 using WpfAppPrism.Views;
-using WpfCustomControlLibraryPrism;
 
 namespace WpfAppPrism
 {
@@ -27,12 +26,5 @@ namespace WpfAppPrism
 			((Window)this.Shell).Show();
 		}
 
-		protected override void ConfigureModuleCatalog()
-		{
-			base.ConfigureModuleCatalog();
-
-			var catalog = (ModuleCatalog)this.ModuleCatalog;
-			catalog.AddModule(typeof(TestModule));
-		}
 	}
 }
