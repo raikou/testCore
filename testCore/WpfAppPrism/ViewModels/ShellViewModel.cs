@@ -1,4 +1,5 @@
 ﻿using Microsoft.Practices.Unity;
+using Prism.Interactivity.InteractionRequest;
 using WpfAppPrism.Models;
 
 namespace WpfAppPrism.ViewModels
@@ -7,5 +8,7 @@ namespace WpfAppPrism.ViewModels
 	{
 		[Dependency]
 		public MessageProvider MessageProvider { get; set; }
+
+		public InteractionRequest<Notification> NotificationRequest { get; } = new InteractionRequest<Notification>();
 	}
 }
