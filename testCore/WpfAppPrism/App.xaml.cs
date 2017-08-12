@@ -13,5 +13,10 @@ namespace WpfAppPrism
 	/// </summary>
 	public partial class App : Application
 	{
+		private void Application_Startup(object sender, StartupEventArgs e)
+		{
+			// Bootstrapperを起動する
+			new Bootstrapper().Run();
+		}
 	}
 }
