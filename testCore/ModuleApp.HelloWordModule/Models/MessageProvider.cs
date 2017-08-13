@@ -1,4 +1,4 @@
-﻿namespace ModuleApp.HelloWorldModule.Models
+﻿namespace testModuleAppPrism.Models.Models
 {
     class MessageProvider
     {

@@ -1,10 +1,10 @@
 ﻿using Microsoft.Practices.Unity;
-using ModuleApp.HelloWorldModule.Models;
-using ModuleApp.HelloWorldModule.Views;
 using Prism.Modularity;
 using Prism.Regions;
+using testModuleAppPrism.Models.Models;
+using testModuleAppPrism.Models.Views;
 
-namespace ModuleApp.HelloWorldModule
+namespace testModuleAppPrism.Models
 {
     public class HelloWorldModule : IModule
     {

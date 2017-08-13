@@ -23,7 +23,7 @@ namespace ModuleApp
             base.ConfigureModuleCatalog();
 
             var catalog = (ModuleCatalog)this.ModuleCatalog;
-            catalog.AddModule(typeof(HelloWorldModule.HelloWorldModule));
+            catalog.AddModule(typeof(testModuleAppPrism.Models.HelloWorldModule));
         }
 
     }
