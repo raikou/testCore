@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace testModuleAppPrism.Views
 {
     /// <summary>
-    /// HelloWorldView.xaml の相互作用ロジック
+    /// testView.xaml の相互作用ロジック
     /// </summary>
     public partial class HelloWorldView : UserControl
     {
