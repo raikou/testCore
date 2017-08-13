@@ -9,6 +9,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-        <TextBlock Text="{Binding MessageProvider.Message}" />
+        <TextBlock Text="{Binding TestMessageProvider.Message}" />
     </Grid>
 </UserControl>
