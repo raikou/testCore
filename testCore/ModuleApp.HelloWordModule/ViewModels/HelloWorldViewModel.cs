@@ -1,7 +1,7 @@
 ﻿using Microsoft.Practices.Unity;
-using testModuleAppPrism.Models.Models;
+using testModuleAppPrism.Models;
 
-namespace testModuleAppPrism.Models.ViewModels
+namespace testModuleAppPrism.ViewModels
 {
     class HelloWorldViewModel
     {

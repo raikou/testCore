@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace testModuleAppPrism.Models.Views
+namespace testModuleAppPrism.Views
 {
     /// <summary>
     /// HelloWorldView.xaml の相互作用ロジック
