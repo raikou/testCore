@@ -131,9 +131,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ModuleApp.HelloWordModule\ModuleApp.HelloWordModule.csproj">
+    <ProjectReference Include="..\ModuleApp.HelloWordModule\testModuleAppPrism.csproj">
       <Project>{ad66186c-fefc-4113-a444-f2299ae18ab1}</Project>
-      <Name>ModuleApp.HelloWordModule</Name>
+      <Name>testModuleAppPrism</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

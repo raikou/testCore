@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppPrism", "WpfAppPrism\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testModuleApp", "ModuleApp\testModuleApp.csproj", "{85129EB5-1406-4E1C-8E6B-1C307CFF4F3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleApp.HelloWordModule", "ModuleApp.HelloWordModule\ModuleApp.HelloWordModule.csproj", "{AD66186C-FEFC-4113-A444-F2299AE18AB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testModuleAppPrism", "ModuleApp.HelloWordModule\testModuleAppPrism.csproj", "{AD66186C-FEFC-4113-A444-F2299AE18AB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
