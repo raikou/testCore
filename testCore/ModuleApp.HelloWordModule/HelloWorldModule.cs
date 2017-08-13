@@ -16,7 +16,7 @@ namespace testModuleAppPrism
 
         public void Initialize()
         {
-            this.Container.RegisterType<MessageProvider>(new ContainerControlledLifetimeManager());
+            this.Container.RegisterType<testMessageProvider>(new ContainerControlledLifetimeManager());
             this.Container.RegisterType<object, HelloWorldView>(nameof(HelloWorldView));
 
             this.RegionManager.RequestNavigate("MainRegion", nameof(HelloWorldView));

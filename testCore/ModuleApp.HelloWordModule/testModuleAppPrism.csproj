@@ -81,7 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HelloWorldModule.cs" />
-    <Compile Include="Models\MessageProvider.cs" />
+    <Compile Include="Models\testMessageProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

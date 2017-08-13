@@ -6,6 +6,6 @@ namespace testModuleAppPrism.ViewModels
     class HelloWorldViewModel
     {
         [Dependency]
-        public MessageProvider MessageProvider { get; set; }
+        public testMessageProvider TestMessageProvider { get; set; }
     }
 }
