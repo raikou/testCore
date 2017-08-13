@@ -6,7 +6,7 @@ using testModuleAppPrism.Views;
 
 namespace testModuleAppPrism
 {
-    public class HelloWorldModule : IModule
+    public class testModule : IModule
     {
         [Dependency]
         public IUnityContainer Container { get; set; }
