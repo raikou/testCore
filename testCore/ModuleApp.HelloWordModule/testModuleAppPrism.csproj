@@ -7,8 +7,8 @@
     <ProjectGuid>{AD66186C-FEFC-4113-A444-F2299AE18AB1}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ModuleApp.HelloWordModule</RootNamespace>
-    <AssemblyName>ModuleApp.HelloWordModule</AssemblyName>
+    <RootNamespace>testModuleAppPrism</RootNamespace>
+    <AssemblyName>testModuleAppPrism</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -48,6 +48,9 @@
       <HintPath>..\..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Prism, Version=6.2.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Prism.Core.6.2.0\lib\net45\Prism.dll</HintPath>
       <Private>True</Private>
@@ -80,6 +83,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="common.cs" />
+    <Compile Include="Models\ToDoList.cs" />
     <Compile Include="testModule.cs" />
     <Compile Include="Models\testMessageProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -95,12 +100,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ViewModels\testViewModel.cs" />
-    <Compile Include="Views\testView.xaml.cs">
-      <DependentUpon>testView.xaml</DependentUpon>
+    <Compile Include="ViewModels\ToDoListCommandViewModel.cs" />
+    <Compile Include="ViewModels\ToDoListMainViewModel.cs" />
+    <Compile Include="Views\ToDoListCommandView.xaml.cs">
+      <DependentUpon>ToDoListCommandView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToDoListMainView.xaml.cs">
+      <DependentUpon>ToDoListMainView.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
@@ -112,10 +121,20 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\testView.xaml">
+    <Page Include="Views\ToDoListCommandView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ToDoListMainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\testCoreClassLibraryStandard\testCoreClassLibraryStandard.csproj">
+      <Project>{b408b781-cb1d-4b68-8cd1-381ad3b78367}</Project>
+      <Name>testCoreClassLibraryStandard</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

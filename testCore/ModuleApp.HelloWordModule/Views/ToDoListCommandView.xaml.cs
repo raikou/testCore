@@ -15,14 +15,14 @@ using System.Windows.Shapes;
 
 namespace testModuleAppPrism.Views
 {
-    /// <summary>
-    /// testView.xaml の相互作用ロジック
-    /// </summary>
-    public partial class HelloWorldView : UserControl
-    {
-        public HelloWorldView()
-        {
-            InitializeComponent();
-        }
-    }
+	/// <summary>
+	/// ToDoListCommandView.xaml の相互作用ロジック
+	/// </summary>
+	public partial class ToDoListCommandView : UserControl
+	{
+		public ToDoListCommandView()
+		{
+			InitializeComponent();
+		}
+	}
 }

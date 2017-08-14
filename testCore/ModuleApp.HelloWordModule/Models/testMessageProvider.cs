@@ -1,6 +1,6 @@
 ﻿namespace testModuleAppPrism.Models
 {
-    class testMessageProvider
+    public class testMessageProvider
     {
         public string Message { get; } = "こんにちは世界 \nssss!!!";
     }

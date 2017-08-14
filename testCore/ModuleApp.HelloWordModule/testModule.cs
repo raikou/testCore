@@ -2,6 +2,7 @@
 using Prism.Modularity;
 using Prism.Regions;
 using testModuleAppPrism.Models;
+using testModuleAppPrism.ViewModels;
 using testModuleAppPrism.Views;
 
 namespace testModuleAppPrism
@@ -16,10 +17,10 @@ namespace testModuleAppPrism
 
         public void Initialize()
         {
-            this.Container.RegisterType<testMessageProvider>(new ContainerControlledLifetimeManager());
-            this.Container.RegisterType<object, HelloWorldView>(nameof(HelloWorldView));
+            this.Container.RegisterType<ToDoList>(new ContainerControlledLifetimeManager());
+            this.Container.RegisterType<object, ToDoListCommandView>(nameof(ToDoListCommandView));
 
-            this.RegionManager.RequestNavigate("MainRegion", nameof(HelloWorldView));
+            this.RegionManager.RequestNavigate("MainRegion", nameof(ToDoListCommandView));
         }
     }
 }
