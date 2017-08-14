@@ -32,8 +32,7 @@ namespace testModuleAppPrism.ViewModels
 		#endregion
 		public ToDoListCommandViewModel()
 		{
-			DataGrid ttt = new DataGrid();
-			ttt.ItemsSource = new List<PersonView>()
+			mainGrid.ItemsSource = new List<PersonView>()
 			{
 				new PersonView()
 				{
@@ -42,7 +41,6 @@ namespace testModuleAppPrism.ViewModels
 					age = 1
 				}
 			};
-			mainGrid = ttt;
 			//コマンド生成
 			this.GetMainListCommand = new DelegateCommand(() =>
 			{

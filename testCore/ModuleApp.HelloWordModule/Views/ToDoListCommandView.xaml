@@ -15,7 +15,7 @@
     <Grid>
 	    <StackPanel>
 		    <Button Content="データ取得" Command="{Binding GetMainListCommand}" />
-		    <DataGrid  ItemsSource="{Binding MainGrid ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="100px"/>
+			<DataGrid  ItemsSource="{Binding MainGrid ,Mode=TwoWay}" Height="100px" IsReadOnly="True"/>
 	    </StackPanel>
     </Grid>
 </UserControl>
