@@ -5,13 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:testModuleAppPrism.Views"
              xmlns:prism="http://prismlibrary.com/"
+             xmlns:viewModels="clr-namespace:testModuleAppPrism.ViewModels"
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+			 <UserControl.DataContext>
+				<viewModels:ToDoListCommandViewModel/>
+			 </UserControl.DataContext>
     <Grid>
 	    <StackPanel>
-		    <DataGrid ItemsSource="{Binding MainGrid }" Margin="10,38,10,66"/>
 		    <Button Content="データ取得" Command="{Binding GetMainListCommand}" />
+		    <DataGrid  ItemsSource="{Binding MainGrid ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="100px"/>
 	    </StackPanel>
     </Grid>
 </UserControl>

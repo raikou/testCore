@@ -1,7 +1,9 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Windows.Controls;
 using Prism.Commands;
 using Prism.Mvvm;
+using testCoreClassLibraryStandard;
 using testModuleAppPrism.Models;
 
 namespace testModuleAppPrism.ViewModels
@@ -19,7 +21,7 @@ namespace testModuleAppPrism.ViewModels
 
 		#region コマンドで利用する画面情報
 
-		private DataGrid mainGrid;
+		private DataGrid mainGrid = new DataGrid();
 		public DataGrid MainGrid
 		{
 			get { return this.mainGrid; }
@@ -30,6 +32,17 @@ namespace testModuleAppPrism.ViewModels
 		#endregion
 		public ToDoListCommandViewModel()
 		{
+			DataGrid ttt = new DataGrid();
+			ttt.ItemsSource = new List<PersonView>()
+			{
+				new PersonView()
+				{
+					id = 0,
+					name = "aaa",
+					age = 1
+				}
+			};
+			mainGrid = ttt;
 			//コマンド生成
 			this.GetMainListCommand = new DelegateCommand(() =>
 			{

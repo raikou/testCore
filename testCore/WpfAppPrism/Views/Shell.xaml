@@ -8,16 +8,15 @@
         prism:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d"
         Title="Shell" Height="300" Width="300">
-    <Grid>
+	<Grid>
 		<TextBlock Text="{Binding MessageProvider.Message}" />
-	    <Grid>
-		    <DataGrid Name="ViewGrid" ItemsSource="{Binding}" Margin="10,38,10,66"></DataGrid>
-		    <TextBox x:Name="testMess" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="497"/>
-		    <Button Content="追加" HorizontalAlignment="Left" Margin="106,287,0,10" Width="75" Click="Button_Click_1"/>
-		    <Button Content="削除" HorizontalAlignment="Left" Margin="196,287,0,10" Width="75" Click="Button_Click_2"/>
-	    </Grid>
-	    <Button Content="追加更新" HorizontalAlignment="Left" Margin="10,0,0,10" Width="75" Click="Button_Click" RenderTransformOrigin="0.491,-0.563" Height="22" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom"/>
-	    <Button Content="追加更新" HorizontalAlignment="Left" Margin="10,0,0,10" Width="75" Click="Button_Click" RenderTransformOrigin="0.491,-0.563" Height="22" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom"/>
+		<Grid>
+			<DataGrid Name="ViewGrid" ItemsSource="{Binding}" Margin="10,38,10,66"></DataGrid>
+			<TextBox x:Name="testMess" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="497"/>
+			<Button Content="追加" HorizontalAlignment="Left" Margin="106,237,0,8" Width="75" Click="Button_Click_1" RenderTransformOrigin="0.5,0.5"/>
+			<Button Content="削除" HorizontalAlignment="Left" Margin="196,237,0,8" Width="75" Click="Button_Click_2" RenderTransformOrigin="0.5,0.5"/>
+		</Grid>
+		<Button Content="追加更新" HorizontalAlignment="Left" Margin="10,0,0,10" Width="75" Click="Button_Click" RenderTransformOrigin="0.491,-0.563" Height="22" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom"/>
 
 	</Grid>
 

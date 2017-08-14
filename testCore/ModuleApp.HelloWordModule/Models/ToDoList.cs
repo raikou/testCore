@@ -15,11 +15,11 @@ namespace testModuleAppPrism.Models
 	{
 		#region API処理
 
-		public async Task< List<PersonView>> GetUserList( )
+		public async Task<List<PersonView>> GetUserList( )
 		{
 			var hc = new HttpClient();
 			hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			var res = await hc.GetAsync(common.GetURL() + "people");
+			var res = await hc.GetAsync(common.GetURL() + "people").ConfigureAwait(false);
 			var str = await res.Content.ReadAsStringAsync();
 			//testMess.Text = str;
 
