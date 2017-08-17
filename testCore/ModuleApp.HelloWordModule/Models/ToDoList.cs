@@ -33,7 +33,7 @@ namespace testModuleAppPrism.Models
 		{
 			var hc = new HttpClient();
 			hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			var res = await hc.GetAsync(common.GetURL() + "people/" + id);
+			var res = await hc.GetAsync(common.GetURL() + "people/" + id).ConfigureAwait(false); ;
 			var str = await res.Content.ReadAsStringAsync();
 			//testMess.Text = str;
 
@@ -61,7 +61,7 @@ namespace testModuleAppPrism.Models
 			hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 			var json = sw.ToString();
 			var cont = new StringContent(json, Encoding.UTF8, "application/json");
-			var res = await hc.PutAsync(common.GetURL() + "people/" + person.id, cont);
+			var res = await hc.PutAsync(common.GetURL() + "people/" + person.id, cont).ConfigureAwait(false); ;
 			var str = await res.Content.ReadAsStringAsync();
 			//testMess.Text = str;
 
@@ -72,10 +72,10 @@ namespace testModuleAppPrism.Models
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		public async Task<PersonView> Post(PersonView person, int maxid)
+		public async Task<PersonView> Post(PersonView person, List<PersonView> gridData)
 		{
 			//最新IDにする
-			person.id = maxid;
+			person.id = maxId(gridData);
 
 			var js = new Newtonsoft.Json.JsonSerializer();
 			var sw = new System.IO.StringWriter();
@@ -84,7 +84,7 @@ namespace testModuleAppPrism.Models
 			hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 			var json = sw.ToString();
 			var cont = new StringContent(json, Encoding.UTF8, "application/json");
-			var res = await hc.PostAsync(common.GetURL() + "people", cont);
+			var res = await hc.PostAsync(common.GetURL() + "people", cont).ConfigureAwait(false); ;
 			var str = await res.Content.ReadAsStringAsync();
 			//testMess.Text = str;
 
@@ -97,9 +97,19 @@ namespace testModuleAppPrism.Models
 		{
 			var hc = new HttpClient();
 			hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			var res = await hc.DeleteAsync(common.GetURL() + "people/" + id);
+			var res = await hc.DeleteAsync(common.GetURL() + "people/" + id).ConfigureAwait(false); ;
 			var str = await res.Content.ReadAsStringAsync();
 			//testMess.Text = str;
+		}
+
+		/// <summary>
+		/// 最大番号を取得する
+		/// </summary>
+		/// <returns></returns>
+		private int maxId(List<PersonView> gridData)
+		{
+			int result = gridData.Max(x => x.id);
+			return result + 1;
 		}
 
 		#endregion

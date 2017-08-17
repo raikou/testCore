@@ -229,7 +229,9 @@ namespace testCoreWpfApp
 			PersonView person= new	PersonView();
 			person.name = "新規データ";
 			person.age = 0;
+#pragma warning disable CS4014 // この呼び出しを待たないため、現在のメソッドの実行は、呼び出しが完了する前に続行します
 			Post(person);
+#pragma warning restore CS4014 // この呼び出しを待たないため、現在のメソッドの実行は、呼び出しが完了する前に続行します
 
 			//最新情報取得
 			GetUserList();

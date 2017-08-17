@@ -14,8 +14,11 @@
 			 </UserControl.DataContext>
     <Grid>
 	    <StackPanel>
-		    <Button Content="データ取得" Command="{Binding GetMainListCommand}" />
 			<DataGrid  ItemsSource="{Binding GridItem ,Mode=TwoWay}" Height="100px" IsReadOnly="True"/>
+		    <Button Content="データ取得" Command="{Binding GetMainListCommand}" />
+		    <Button Content="追加" Command="{Binding Add}" />
+			<Button Content="更新" Command="{Binding Upd}" />
+			<Button Content="削除" Command="{Binding Del}" />
 	    </StackPanel>
     </Grid>
 </UserControl>

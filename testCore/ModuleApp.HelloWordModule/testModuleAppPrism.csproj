@@ -9,10 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>testModuleAppPrism</RootNamespace>
     <AssemblyName>testModuleAppPrism</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -77,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="common.cs" />
+    <Compile Include="Models\InteractionRequestModel.cs" />
     <Compile Include="Models\ToDoList.cs" />
     <Compile Include="testModule.cs" />
     <Compile Include="Models\testMessageProvider.cs" />
@@ -93,8 +95,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ViewModels\InteractionRequestViewModel.cs" />
     <Compile Include="ViewModels\ToDoListCommandViewModel.cs" />
     <Compile Include="ViewModels\ToDoListMainViewModel.cs" />
+    <Compile Include="Views\InteractionRequestView.xaml.cs">
+      <DependentUpon>InteractionRequestView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ToDoListCommandView.xaml.cs">
       <DependentUpon>ToDoListCommandView.xaml</DependentUpon>
     </Compile>
@@ -114,6 +120,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\InteractionRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ToDoListCommandView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
