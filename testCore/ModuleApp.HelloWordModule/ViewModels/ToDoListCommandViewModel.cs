@@ -21,18 +21,18 @@ namespace testModuleAppPrism.ViewModels
 
 		#region コマンドで利用する画面情報
 
-		private DataGrid mainGrid = new DataGrid();
-		public DataGrid MainGrid
+		private List<PersonView> gridItem = new List<PersonView>();
+		public List<PersonView> GridItem
 		{
-			get { return this.mainGrid; }
-			set { this.SetProperty(ref this.mainGrid, value); }
+			get { return this.gridItem; }
+			set { this.SetProperty(ref this.gridItem, value); }
 		}
 
 
 		#endregion
 		public ToDoListCommandViewModel()
 		{
-			mainGrid.ItemsSource = new List<PersonView>()
+			gridItem = new List<PersonView>()
 			{
 				new PersonView()
 				{
@@ -44,7 +44,7 @@ namespace testModuleAppPrism.ViewModels
 			//コマンド生成
 			this.GetMainListCommand = new DelegateCommand(() =>
 			{
-				mainGrid.ItemsSource = toDoList.GetUserList().Result;
+				GridItem = toDoList.GetUserList().Result;
 			});
 		}
 
