@@ -7,7 +7,7 @@ using testModuleAppPrism.Views;
 
 namespace testModuleAppPrism
 {
-    public class testModule : IModule
+    public class testModuleAppPrism : IModule
     {
         [Dependency]
         public IUnityContainer Container { get; set; }
@@ -18,9 +18,11 @@ namespace testModuleAppPrism
         public void Initialize()
         {
             this.Container.RegisterType<ToDoList>(new ContainerControlledLifetimeManager());
-            this.Container.RegisterType<object, ToDoListCommandView>(nameof(ToDoListCommandView));
+	        this.Container.RegisterType<object, ToDoListCommandView>(nameof(ToDoListCommandView));
+	        this.Container.RegisterType<object, ToDoDetailView>(nameof(ToDoDetailView));
 
-            this.RegionManager.RequestNavigate("MainRegion", nameof(ToDoListCommandView));
-        }
-    }
+			this.RegionManager.RequestNavigate("MainRegion", nameof(ToDoListCommandView));
+			//this.RegionManager.RequestNavigate("MainRegion", nameof(ToDoDetailView));
+		}
+	}
 }

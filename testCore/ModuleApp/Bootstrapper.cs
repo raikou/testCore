@@ -1,4 +1,5 @@
-﻿using Microsoft.Practices.Unity;
+﻿using System.Linq;
+using Microsoft.Practices.Unity;
 using ModuleApp.Views;
 using Prism.Modularity;
 using Prism.Unity;
@@ -22,9 +23,15 @@ namespace ModuleApp
         {
             base.ConfigureModuleCatalog();
 
-            var catalog = (ModuleCatalog)this.ModuleCatalog;
-            catalog.AddModule(typeof(testModuleAppPrism.testModule));
-        }
+			var catalog = (ModuleCatalog)this.ModuleCatalog;
+			catalog.AddModule(typeof(testModuleAppPrism.testModuleAppPrism));
+			//this.Container.RegisterTypes(
+			//	AllClasses.FromLoadedAssemblies()
+			//		.Where(x => x.Namespace.EndsWith(".Views")),
+			//	getFromTypes: _ => new[] { typeof(object) },
+			//	getName: WithName.TypeName);
 
-    }
+		}
+
+	}
 }

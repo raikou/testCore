@@ -80,7 +80,7 @@
     <Compile Include="common.cs" />
     <Compile Include="Models\InteractionRequestModel.cs" />
     <Compile Include="Models\ToDoList.cs" />
-    <Compile Include="testModule.cs" />
+    <Compile Include="testModuleAppPrism.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -95,9 +95,13 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\InteractionRequestViewModel.cs" />
+    <Compile Include="ViewModels\ToDoDetailViewModel.cs" />
     <Compile Include="ViewModels\ToDoListCommandViewModel.cs" />
     <Compile Include="Views\InteractionRequestView.xaml.cs">
       <DependentUpon>InteractionRequestView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ToDoDetailView.xaml.cs">
+      <DependentUpon>ToDoDetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ToDoListCommandView.xaml.cs">
       <DependentUpon>ToDoListCommandView.xaml</DependentUpon>
@@ -116,6 +120,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\InteractionRequestView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ToDoDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
