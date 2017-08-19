@@ -8,12 +8,18 @@ using Prism.Commands;
 using Prism.Common;
 using Prism.Mvvm;
 using Prism.Regions;
+using testCoreClassLibraryStandard;
+using testModuleAppPrism.Models;
 using testModuleAppPrism.Views;
 
 namespace testModuleAppPrism.ViewModels
 {
 	public class ToDoDetailViewModel : BindableBase, IRegionMemberLifetime, INavigationAware
 	{
+		#region Model情報
+		ToDoList toDoList = new ToDoList();
+		#endregion
+
 		#region コマンド
 
 		public DelegateCommand BackCommand { get; }
@@ -26,13 +32,13 @@ namespace testModuleAppPrism.ViewModels
 
 		public bool KeepAlive { get; set; } = true;
 
-		private string id;
-
-		public string Id
+		private PersonView selectItem = new PersonView();
+		public PersonView SelectItem
 		{
-			get { return this.id; }
-			set { this.SetProperty(ref this.id, value); }
+			get { return this.selectItem; }
+			set { this.SetProperty(ref this.selectItem, value); }
 		}
+
 		#endregion
 
 		#region コンストラクタ
@@ -67,7 +73,11 @@ namespace testModuleAppPrism.ViewModels
 		public void OnNavigatedTo(NavigationContext navigationContext)
 		{
 			Debug.WriteLine("OnNavigatedTo");
-			this.Id = navigationContext.Parameters["id"] as string;
+			string id = navigationContext.Parameters["id"] as string;
+
+			//画面遷移時のデータ取得（ここで良いのかな？）
+			this.SelectItem = toDoList.GetById(int.Parse(id)).Result;
+
 			this.RegionManager = navigationContext.NavigationService.Region.RegionManager;
 		}
 

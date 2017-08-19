@@ -29,7 +29,7 @@ namespace testModuleAppPrism.Models
 			return items.ToList();
 		}
 
-		public async void GetById(int id, DataGrid dataGrid)
+		public async Task<PersonView> GetById(int id)
 		{
 			var hc = new HttpClient();
 			hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -40,9 +40,7 @@ namespace testModuleAppPrism.Models
 			var js = new Newtonsoft.Json.JsonSerializer();
 			var jr = new Newtonsoft.Json.JsonTextReader(new System.IO.StringReader(str));
 			var item = js.Deserialize<PersonView>(jr);
-			List<PersonView> items = new List<PersonView>();
-			items.Add(item);
-			dataGrid.ItemsSource = items;
+			return item;
 		}
 
 		/// <summary>
