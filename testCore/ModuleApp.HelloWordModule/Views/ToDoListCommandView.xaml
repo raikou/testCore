@@ -9,9 +9,6 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-	<UserControl.DataContext>
-		<viewModels:ToDoListCommandViewModel />
-	</UserControl.DataContext>
 	<Grid>
 		<StackPanel>
 			<DataGrid ItemsSource="{Binding GridItem ,Mode=TwoWay}" Height="200" IsReadOnly="True" SelectedItem="{Binding SelectItem}" SelectionMode="Single"/>

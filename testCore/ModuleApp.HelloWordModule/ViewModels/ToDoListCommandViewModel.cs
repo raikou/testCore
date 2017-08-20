@@ -129,9 +129,6 @@ namespace testModuleAppPrism.ViewModels
 		public void OnNavigatedTo(NavigationContext navigationContext)
 		{
 			Debug.WriteLine("NavigatedTo");
-
-			//TODO:ここで取得をしておかないと、nullになってしまっている
-			this.RegionManager = navigationContext.NavigationService.Region.RegionManager;
 		}
 
 		public void OnNavigatedFrom(NavigationContext navigationContext)

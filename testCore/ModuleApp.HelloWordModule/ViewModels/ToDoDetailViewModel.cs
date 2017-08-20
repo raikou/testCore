@@ -78,9 +78,6 @@ namespace testModuleAppPrism.ViewModels
 			//画面遷移時のデータ取得（ここで良いのかな？）
 			//this.SelectItem = toDoList.GetById(personView.id).Result;
 			this.SelectItem = personView;
-
-			//TODO:ここで取得をしておかないと、nullになってしまっている
-			this.RegionManager = navigationContext.NavigationService.Region.RegionManager;
 		}
 
 		public void OnNavigatedFrom(NavigationContext navigationContext)
