@@ -27,10 +27,12 @@ namespace testModuleAppPrism.ViewModels
 		#endregion
 
 		#region パラメータ
-		[Dependency]
-		public IRegionManager RegionManager { get; set; }
-
+		public IRegionManager RegionManager
+		{
+			get { return navigationService.Region.RegionManager; }
+		}
 		public bool KeepAlive { get; set; } = true;
+		private IRegionNavigationService navigationService;
 
 		private PersonView selectItem = new PersonView();
 		public PersonView SelectItem
@@ -78,6 +80,8 @@ namespace testModuleAppPrism.ViewModels
 			//画面遷移時のデータ取得（ここで良いのかな？）
 			//this.SelectItem = toDoList.GetById(personView.id).Result;
 			this.SelectItem = personView;
+
+			this.navigationService = navigationContext.NavigationService;//公式参照するとこっちが書いてあるのでこっちでは？http://vdlz.xyz/Csharp/ToolKit/MVVM/Prism/Doc/DG50/DG50_005.html
 		}
 
 		public void OnNavigatedFrom(NavigationContext navigationContext)

@@ -9,6 +9,9 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+			 <UserControl.DataContext>
+				<viewModels:ToDoDetailViewModel />
+			 </UserControl.DataContext>
 	<Grid>
 		<StackPanel>
 			<TextBlock Text="テスト"></TextBlock>
