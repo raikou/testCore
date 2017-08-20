@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Data;
 using System.Linq;
@@ -101,8 +102,10 @@ namespace testModuleAppPrism.ViewModels
 				//	.First(x => MvvmHelpers.GetImplementerFromViewOrViewModel<ToDoListCommandViewModel>(x) == this);
 				//// deactive view
 				//this.RegionManager.Regions["MainRegion"].Deactivate(view);
+				NavigationParameters param = new NavigationParameters();
+				param.Add("SelectItem", SelectItem);
 
-				this.RegionManager.RequestNavigate("MainRegion", nameof(ToDoDetailView), new NavigationParameters($"id={SelectItem.id}"));
+				this.RegionManager.RequestNavigate("MainRegion",(nameof(ToDoDetailView)), param);
 
 			});
 		}

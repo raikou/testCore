@@ -73,10 +73,10 @@ namespace testModuleAppPrism.ViewModels
 		public void OnNavigatedTo(NavigationContext navigationContext)
 		{
 			Debug.WriteLine("OnNavigatedTo");
-			string id = navigationContext.Parameters["id"] as string;
+			PersonView personView = navigationContext.Parameters["SelectItem"] as PersonView;
 
 			//画面遷移時のデータ取得（ここで良いのかな？）
-			this.SelectItem = toDoList.GetById(int.Parse(id)).Result;
+			this.SelectItem = toDoList.GetById(personView.id).Result;
 
 			this.RegionManager = navigationContext.NavigationService.Region.RegionManager;
 		}

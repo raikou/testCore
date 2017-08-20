@@ -22,7 +22,7 @@ namespace testModuleAppPrism
 	        this.Container.RegisterType<object, ToDoDetailView>(nameof(ToDoDetailView));
 
 			this.RegionManager.RequestNavigate("MainRegion", nameof(ToDoListCommandView));
-			//this.RegionManager.RequestNavigate("MainRegion", nameof(ToDoDetailView));
+	        //this.RegionManager.RequestNavigate("MainRegion", nameof(ToDoDetailView));
 		}
 	}
 }
