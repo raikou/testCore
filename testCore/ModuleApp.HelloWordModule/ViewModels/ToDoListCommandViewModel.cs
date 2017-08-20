@@ -68,7 +68,18 @@ namespace testModuleAppPrism.ViewModels
 		public ToDoListCommandViewModel()
 		{
 			//初期データ取得
-			GridItem = toDoList.GetUserList().Result;
+			//GridItem = toDoList.GetUserList().Result;
+			List<PersonView> list = new List<PersonView>()
+			{
+				new PersonView()
+				{
+					id = 5,
+					age = 10,
+					name = "テスト"
+				}
+			};
+
+			GridItem = list;
 
 			//コマンド生成
 			this.GetMainListCommand = new DelegateCommand(() =>
@@ -118,6 +129,8 @@ namespace testModuleAppPrism.ViewModels
 		public void OnNavigatedTo(NavigationContext navigationContext)
 		{
 			Debug.WriteLine("NavigatedTo");
+
+			//TODO:ここで取得をしておかないと、nullになってしまっている
 			this.RegionManager = navigationContext.NavigationService.Region.RegionManager;
 		}
 

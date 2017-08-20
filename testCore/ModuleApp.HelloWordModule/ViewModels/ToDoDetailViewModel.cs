@@ -76,8 +76,10 @@ namespace testModuleAppPrism.ViewModels
 			PersonView personView = navigationContext.Parameters["SelectItem"] as PersonView;
 
 			//画面遷移時のデータ取得（ここで良いのかな？）
-			this.SelectItem = toDoList.GetById(personView.id).Result;
+			//this.SelectItem = toDoList.GetById(personView.id).Result;
+			this.SelectItem = personView;
 
+			//TODO:ここで取得をしておかないと、nullになってしまっている
 			this.RegionManager = navigationContext.NavigationService.Region.RegionManager;
 		}
 
