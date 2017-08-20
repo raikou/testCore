@@ -10,6 +10,10 @@ CentOSで ASP.NET と API を動かす。
 主に参考にさせて頂いたサイト・Git  
 https://github.com/runceel/PrismEdu  
 https://teratail.com/questions/75555  
-http://wiki.tk2kpdn.com/build-error-prism5-interactionrequesttrigger-with-vs2015/  
 
-※Blendでエラーが出る場合は、Blendを一度起動して、その後に、上記参照URLのコマンドを打つと、エラーとならなくなる  
+MSDN
+https://msdn.microsoft.com/en-us/library/gg430861(v=pandp.40).aspx  
+※言い訳用
+
+※Blendでエラーが出る場合は、Blendを一度起動して、その後に、以下の参照URLのコマンドを打つと、エラーとならなくなる  
+http://wiki.tk2kpdn.com/build-error-prism5-interactionrequesttrigger-with-vs2015/  
