@@ -22,22 +22,22 @@ namespace testCore.Controllers.testEF
         }
 
         // GET: api/Data
-        [HttpGet]
-        public IEnumerable<data> Getdata()
+        [HttpGet("{userid}")]
+        public IEnumerable<data> Getdata([FromRoute] int userid)
         {
-            return _context.data;
+            return _context.data.Where(x=>x.userid == userid);
         }
 
-        // GET: api/Data/5
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Getdata([FromRoute] int id)
+        // GET: api/Data/5/4
+        [HttpGet("{userid}/{dataid}")]
+        public async Task<IActionResult> Getdata([FromRoute] int userid, [FromRoute] int dataid)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var data = await _context.data.SingleOrDefaultAsync(m => m.dataid == id);
+            var data = await _context.data.SingleOrDefaultAsync(m => m.userid == userid && m.dataid == dataid);
 
             if (data == null)
             {
@@ -48,15 +48,15 @@ namespace testCore.Controllers.testEF
         }
 
         // PUT: api/Data/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Putdata([FromRoute] int id, [FromBody] data data)
+        [HttpPut("{userid}/{dataid}")]
+        public async Task<IActionResult> Putdata([FromRoute] int userid, [FromRoute] int dataid, [FromBody] data data)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != data.dataid)
+            if (false ==(userid == data.userid && dataid == data.dataid))
             {
                 return BadRequest();
             }
@@ -69,7 +69,7 @@ namespace testCore.Controllers.testEF
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!dataExists(id))
+                if (!dataExists(userid))
                 {
                     return NotFound();
                 }
@@ -98,15 +98,15 @@ namespace testCore.Controllers.testEF
         }
 
         // DELETE: api/Data/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Deletedata([FromRoute] int id)
+        [HttpDelete("{userid}/{dataid}")]
+        public async Task<IActionResult> Deletedata([FromRoute] int userid, [FromRoute] int dataid)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var data = await _context.data.SingleOrDefaultAsync(m => m.dataid == id);
+            var data = await _context.data.SingleOrDefaultAsync(m => m.dataid == dataid && m.userid == userid);
             if (data == null)
             {
                 return NotFound();
