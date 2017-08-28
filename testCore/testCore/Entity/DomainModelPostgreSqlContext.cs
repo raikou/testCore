@@ -57,5 +57,7 @@ namespace testCore.Entity
 				entry.Property("UpdatedTimestamp").CurrentValue = DateTime.UtcNow;
 			}
 		}
+
+		public DbSet<testCore.Entity.Models.data> data { get; set; }
 	}
 }

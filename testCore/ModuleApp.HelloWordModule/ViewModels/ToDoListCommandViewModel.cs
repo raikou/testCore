@@ -66,6 +66,9 @@ namespace testModuleAppPrism.ViewModels
 
 
 		#endregion
+
+		#region コンストラクタ
+
 		public ToDoListCommandViewModel()
 		{
 			//初期データ取得
@@ -122,6 +125,10 @@ namespace testModuleAppPrism.ViewModels
 			});
 		}
 
+		#endregion
+
+		#region INavigationAware
+
 		public bool IsNavigationTarget(NavigationContext navigationContext)
 		{
 			return true;
@@ -137,5 +144,7 @@ namespace testModuleAppPrism.ViewModels
 		{
 			Debug.WriteLine("NavigatedFrom");
 		}
+
+		#endregion
 	}
 }
