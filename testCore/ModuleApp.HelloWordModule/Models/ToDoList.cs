@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using testCoreClassLibraryStandard;
 using testCoreWpfApp;
+using testModuleAppPrism.Views;
 
 namespace testModuleAppPrism.Models
 {
@@ -15,31 +16,33 @@ namespace testModuleAppPrism.Models
 	{
 		#region API処理
 
-		public async Task<List<PersonView>> GetUserList( )
+		public async Task<List<TodoDetailData>> GetUserList( )
 		{
 			var hc = new HttpClient();
 			hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			var res = await hc.GetAsync(common.GetURL() + "people").ConfigureAwait(false);
+			var res = await hc.GetAsync(common.GetURL() + "Data").ConfigureAwait(false);
 			var str = await res.Content.ReadAsStringAsync();
 			//testMess.Text = str;
 
 			var js = new Newtonsoft.Json.JsonSerializer();
 			var jr = new Newtonsoft.Json.JsonTextReader(new System.IO.StringReader(str));
-			var items = js.Deserialize<List<PersonView>>(jr);
+			var items = js.Deserialize<List<TodoDetailData>>(jr);
 			return items.ToList();
 		}
 
-		public async Task<PersonView> GetById(int id)
+		public async Task<TodoDetailData> GetById(int id)
 		{
 			var hc = new HttpClient();
 			hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			var res = await hc.GetAsync(common.GetURL() + "people/" + id).ConfigureAwait(false); ;
+			//var res = await hc.GetAsync(common.GetURL() + "people/" + userid).ConfigureAwait(false); ;
+			var res = await hc.GetAsync(common.GetURL() + "data/" + id).ConfigureAwait(false); ;
+
 			var str = await res.Content.ReadAsStringAsync();
 			//testMess.Text = str;
 
 			var js = new Newtonsoft.Json.JsonSerializer();
 			var jr = new Newtonsoft.Json.JsonTextReader(new System.IO.StringReader(str));
-			var item = js.Deserialize<PersonView>(jr);
+			var item = js.Deserialize<TodoDetailData>(jr);
 			return item;
 		}
 
@@ -48,18 +51,18 @@ namespace testModuleAppPrism.Models
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		public async void PutById(PersonView person)
+		public async void PutById(TodoDetailData data)
 		{
-			person.name = "更新データ";
-			person.age++;
+			data.title = "更新データ";
+			data.detail= "適当";
 			var js = new Newtonsoft.Json.JsonSerializer();
 			var sw = new System.IO.StringWriter();
-			js.Serialize(sw, person);
+			js.Serialize(sw, data);
 			var hc = new HttpClient();
 			hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 			var json = sw.ToString();
 			var cont = new StringContent(json, Encoding.UTF8, "application/json");
-			var res = await hc.PutAsync(common.GetURL() + "people/" + person.id, cont).ConfigureAwait(false); ;
+			var res = await hc.PutAsync(common.GetURL() + "data/" + data.userid + "/" + data.dataid, cont).ConfigureAwait(false); ;
 			var str = await res.Content.ReadAsStringAsync();
 			//testMess.Text = str;
 
@@ -70,32 +73,32 @@ namespace testModuleAppPrism.Models
 		/// </summary>
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
-		public async Task<PersonView> Post(PersonView person, List<PersonView> gridData)
+		public async Task<TodoDetailData> Post(TodoDetailData data, List<TodoDetailData> gridData)
 		{
 			//最新IDにする
-			person.id = maxId(gridData);
+			data.dataid = maxId(gridData);
 
 			var js = new Newtonsoft.Json.JsonSerializer();
 			var sw = new System.IO.StringWriter();
-			js.Serialize(sw, person);
+			js.Serialize(sw, data);
 			var hc = new HttpClient();
 			hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 			var json = sw.ToString();
 			var cont = new StringContent(json, Encoding.UTF8, "application/json");
-			var res = await hc.PostAsync(common.GetURL() + "people", cont).ConfigureAwait(false); ;
+			var res = await hc.PostAsync(common.GetURL() + "data", cont).ConfigureAwait(false); ;
 			var str = await res.Content.ReadAsStringAsync();
 			//testMess.Text = str;
 
 			var jr = new Newtonsoft.Json.JsonTextReader(new System.IO.StringReader(str));
-			var item = js.Deserialize<PersonView>(jr);
+			var item = js.Deserialize<TodoDetailData>(jr);
 			return item;
 		}
 
-		public async void DeleteById(int id)
+		public async void DeleteById(int userid, int dataid)
 		{
 			var hc = new HttpClient();
 			hc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			var res = await hc.DeleteAsync(common.GetURL() + "people/" + id).ConfigureAwait(false); ;
+			var res = await hc.DeleteAsync(common.GetURL() + "data/" + userid + "/" + dataid).ConfigureAwait(false); ;
 			var str = await res.Content.ReadAsStringAsync();
 			//testMess.Text = str;
 		}
@@ -104,9 +107,9 @@ namespace testModuleAppPrism.Models
 		/// 最大番号を取得する
 		/// </summary>
 		/// <returns></returns>
-		private int maxId(List<PersonView> gridData)
+		private int maxId(List<TodoDetailData> gridData)
 		{
-			int result = gridData.Max(x => x.id);
+			int result = gridData.Max(x => x.dataid);
 			return result + 1;
 		}
 

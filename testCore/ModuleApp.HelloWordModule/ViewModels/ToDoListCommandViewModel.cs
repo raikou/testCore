@@ -50,8 +50,8 @@ namespace testModuleAppPrism.ViewModels
 
 		#region コマンドで利用する画面情報
 
-		private List<PersonView> gridItem = new List<PersonView>();
-		public List<PersonView> GridItem
+		private List<TodoDetailData> gridItem = new List<TodoDetailData>();
+		public List<TodoDetailData> GridItem
 		{
 			get { return this.gridItem; }
 			set { this.SetProperty(ref this.gridItem, value); }
@@ -73,13 +73,12 @@ namespace testModuleAppPrism.ViewModels
 		{
 			//初期データ取得
 			//GridItem = toDoList.GetUserList().Result;
-			List<PersonView> list = new List<PersonView>()
+			var list = new List<TodoDetailData>()
 			{
-				new PersonView()
+				new TodoDetailData()
 				{
-					id = 5,
-					age = 10,
-					name = "テスト"
+					userid = 0
+					, dataid = 0
 				}
 			};
 
@@ -92,10 +91,10 @@ namespace testModuleAppPrism.ViewModels
 			});
 			this.AddCommand = new DelegateCommand(() =>
 			{
-				PersonView person = new PersonView();
-				person.name = "新規データ";
-				person.age = 0;
-				toDoList.Post(person, GridItem );
+				//PersonView person = new PersonView();
+				//person.name = "新規データ";
+				//person.age = 0;
+				//toDoList.Post(person, GridItem );
 
 				GridItem = toDoList.GetUserList().Result;
 			});

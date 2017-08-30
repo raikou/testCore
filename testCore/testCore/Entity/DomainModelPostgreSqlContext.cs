@@ -18,16 +18,16 @@ namespace testCore.Entity
 
 
 		public DbSet<DataEventRecord> DataEventRecords { get; set; }
-
 		public DbSet<SourceInfo> SourceInfos { get; set; }
-
 		public DbSet<person> person { get; set; }
+		public DbSet<tododetaildata> tododetaildata { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder builder)
 		{
 			builder.Entity<DataEventRecord>().HasKey(m => m.DataEventRecordId);
 			builder.Entity<SourceInfo>().HasKey(m => m.SourceInfoId);
 			builder.Entity<person>().HasKey(m => m.id);
+			builder.Entity<tododetaildata>().HasKey(m => new{ m.userid , m.dataid});
 
 			// shadow properties
 			builder.Entity<DataEventRecord>().Property<DateTime>("UpdatedTimestamp");
@@ -57,7 +57,5 @@ namespace testCore.Entity
 				entry.Property("UpdatedTimestamp").CurrentValue = DateTime.UtcNow;
 			}
 		}
-
-		public DbSet<testCore.Entity.Models.data> data { get; set; }
 	}
 }
